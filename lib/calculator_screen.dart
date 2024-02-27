@@ -173,6 +173,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     setState(() {
                       calculator.push(num.parse(inputNumber));
                       numberTyped = false;
+                      inputNumber = '';
                     });
                   },
                   child: const Text('Enter'),
