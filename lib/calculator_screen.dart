@@ -18,6 +18,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Command squareCommand = SquareCommand();
   bool numberTyped = false;
   String inputNumber = '';
+  String lastResult = '';
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   child: Text(
                     calculator.stack.isEmpty
                         ? ''
-                        : calculator.stack.last.toString(),
+                        : lastResult,
                   ),
                 ),
               ],
@@ -67,6 +68,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   onPressed: () {
                     setState(() {
                       calculator.execute(addCommand);
+                      lastResult = calculator.stack.last.toString();
                     });
                   },
                   child: const Text('+'),
@@ -75,6 +77,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   onPressed: () {
                     setState(() {
                       calculator.execute(subtractCommand);
+                      lastResult = calculator.stack.last.toString();
                     });
                   },
                   child: const Text('-'),
@@ -83,6 +86,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   onPressed: () {
                     setState(() {
                       calculator.execute(multiplicationCommand);
+                      lastResult = calculator.stack.last.toString();
                     });
                   },
                   child: const Text('*'),
@@ -91,6 +95,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   onPressed: () {
                     setState(() {
                       calculator.execute(divisionCommand);
+                      lastResult = calculator.stack.last.toString();
                     });
                   },
                   child: const Text('/'),
@@ -104,6 +109,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   onPressed: () {
                     setState(() {
                       calculator.execute(squareRootCommand);
+                      lastResult = calculator.stack.last.toString();
                     });
                   },
                   child: const Text('√'),
@@ -112,6 +118,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   onPressed: () {
                     setState(() {
                       calculator.execute(squareCommand);
+                      lastResult = calculator.stack.last.toString();
                     });
                   },
                   child: const Text('x²'),
@@ -121,6 +128,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     setState(() {
                       calculator.stack.clear();
                       inputNumber = '';
+                      lastResult = '';
                     });
                   },
                   child: const Text('C'),
