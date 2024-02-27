@@ -120,6 +120,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   onPressed: () {
                     setState(() {
                       calculator.stack.clear();
+                      inputNumber = '';
                     });
                   },
                   child: const Text('C'),
