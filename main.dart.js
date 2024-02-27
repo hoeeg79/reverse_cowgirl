@@ -53645,7 +53645,8 @@ $S:0}
 A.Un.prototype={
 $0(){var s=this.a
 s.d.a.push(A.aj6(s.Q))
-s.z=!1},
+s.z=!1
+s.Q=""},
 $S:0}
 A.yp.prototype={
 O(a){return new A.pC(new A.nU(null),"Flutter Demo",A.a5l(null,A.aaR(B.M,B.B9),!0),null)}}
