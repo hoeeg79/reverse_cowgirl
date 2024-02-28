@@ -48,15 +48,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               children: [
                 Center(
                   child: Text(
-                    inputNumber.isEmpty? 'Enter a number' : inputNumber.toString(),
+                    inputNumber.isEmpty
+                        ? 'Enter a number'
+                        : inputNumber.toString(),
                     style: const TextStyle(fontSize: 48),
                   ),
                 ),
                 Center(
                   child: Text(
-                    calculator.stack.isEmpty
-                        ? ''
-                        : lastResult,
+                    calculator.stack.isEmpty ? '' : lastResult,
                   ),
                 ),
               ],
@@ -136,49 +136,54 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ],
             ),
             const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (var i = 1; i < 10; i++)
+            Container(
+              height: 300,
+              width: 200,
+              child: GridView(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 2,
+                  mainAxisSpacing: 2,
+                  childAspectRatio: 1, // You can adjust this value if needed
+                ),
+                children: [
+                  for (var i = 1; i < 10; i++)
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          if (numberTyped) {
+                            inputNumber += i.toString();
+                          } else {
+                            inputNumber = i.toString();
+                            print(inputNumber);
+                            numberTyped = true;
+                          }
+                        });
+                      },
+                      child: Text(i.toString()),
+                    ),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        if(numberTyped)
-                        {
-                          inputNumber += i.toString();
-                        }
-                        else
-                        {
-                          inputNumber = i.toString();
-                          print(inputNumber);
-                          numberTyped = true;
+                        if (numberTyped) {
+                          inputNumber += '0';
                         }
                       });
                     },
-                    child: Text(i.toString()),
+                    child: const Text('0'),
                   ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      if(numberTyped)
-                      {
-                        inputNumber += '0';
-                      }
-                    });
-                  },
-                  child: const Text('0'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      calculator.push(num.parse(inputNumber));
-                      numberTyped = false;
-                      inputNumber = '';
-                    });
-                  },
-                  child: const Text('Enter'),
-                ),
-              ],
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.push(num.parse(inputNumber));
+                        numberTyped = false;
+                        inputNumber = '';
+                      });
+                    },
+                    child: const Text('Enter'),
+                  ),
+                ],
+              ),
             ),
           ],
         ));
