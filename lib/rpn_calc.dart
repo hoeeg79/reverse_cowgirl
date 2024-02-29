@@ -9,17 +9,25 @@ class AddCommand implements Command {
   void apply(List<num> stack, List<num> history) {
     num n1 = stack.removeLast();
     num n2 = stack.removeLast();
-    var result = n1 + n2;
-    stack.add(result);
+
     history.add(n1);
     history.add(n2);
+
+    var result = n1 + n2;
+    stack.add(result);
   }
 }
 
 class SubtractCommand implements Command {
   @override
   void apply(List<num> stack, List<num> history) {
-    var result = stack.removeLast() - stack.removeLast() ;
+    final num n1 = stack.removeLast();
+    final num n2 = stack.removeLast();
+
+    history.add(n1);
+    history.add(n2);
+
+    var result = n1 - n2;
     stack.add(result);
   }
 }
