@@ -23,12 +23,11 @@ void main (){
       final stack = [1, 2, 3];
       final List<num> history = [];
       AddCommand().apply(stack, history);
-      print('stack' + stack.toString());
-      print(history);
       UndoCommand().apply(stack, history);
       expect(stack, [1, 2, 3]);
     });
   });
+
   //Tests for the subtraction command
   group('subtractCommand',(){
     test('Checks if the number subtraction works',(){
@@ -42,7 +41,16 @@ void main (){
       SubtractCommand().apply(stack, []);
       expect(stack, [4, 1]);
     });
+
+    test('Checks if the undo button removes a stack',(){
+      final stack = [4, 1, 2];
+      final List<num> history = [];
+      SubtractCommand().apply(stack, history);
+      UndoCommand().apply(stack, history);
+      expect(stack, [4, 1, 2]);
+    });
   });
+
   //Tests for the multiplication command
   group('multiplicationCommand', () {
     test('Checks if the number multiplication works',(){
@@ -55,6 +63,14 @@ void main (){
       final stack = [2,2,2];
       MultiplicationCommand().apply(stack, []);
       expect(stack, [2, 4]);
+    });
+
+    test('Checks if the undo button removes a stack',(){
+      final stack = [2, 2, 2];
+      final List<num> history = [];
+      MultiplicationCommand().apply(stack, history);
+      UndoCommand().apply(stack, history);
+      expect(stack, [2, 2, 2]);
     });
   });
   //Tests for the division command
@@ -70,6 +86,14 @@ void main (){
       DivisionCommand().apply(stack, []);
       expect(stack, [2.0, 2.0]);
     });
+
+    test('Checks if the undo button removes a stack',(){
+      final stack = [2.0, 4.0, 8.0];
+      final List<num> history = [];
+      DivisionCommand().apply(stack, history);
+      UndoCommand().apply(stack, history);
+      expect(stack, [2.0, 4.0, 8.0]);
+    });
   });
 
   group('SquareRootCommand', () {
@@ -78,6 +102,14 @@ void main (){
         SquareRootCommand().apply(stack, []);
         expect(stack, [2.0]);
     });
+
+    test('Checks if the undo button removes a stack',(){
+      final stack = [4.0];
+      final List<num> history = [];
+      SquareRootCommand().apply(stack, history);
+      UndoCommand().apply(stack, history);
+      expect(stack, [4.0]);
+    });
   });
 
   group('SquareCommand', () {
@@ -85,6 +117,14 @@ void main (){
       final stack = [23.0];
       SquareCommand().apply(stack, []);
       expect(stack, [529.0]);
+    });
+
+    test('Checks if the undo button removes a stack',(){
+      final stack = [23.0];
+      final List<num> history = [];
+      SquareCommand().apply(stack, history);
+      UndoCommand().apply(stack, history);
+      expect(stack, [23.0]);
     });
   });
 }
