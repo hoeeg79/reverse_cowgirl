@@ -88,7 +88,8 @@ class UndoCommand implements Command {
   @override
   void apply(List<num> stack, List<num> history) {
     stack.removeLast();
-    for (var number = 0; number < history.length; number++) {
+    final historyLength = history.length;
+    for (var number = 0; number < historyLength; number++) {
       stack.add(history.removeLast());
     }
   }
