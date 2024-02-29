@@ -10,9 +10,9 @@ class AddCommand implements Command {
     num n1 = stack.removeLast();
     num n2 = stack.removeLast();
     var result = n1 + n2;
-    List<num> usedNumbers = [n2, n1];
     stack.add(result);
-    history = usedNumbers;
+    history.add(n1);
+    history.add(n2);
   }
 }
 

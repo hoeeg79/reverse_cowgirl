@@ -23,7 +23,10 @@ void main (){
       final stack = [1, 2, 3];
       final List<num> history = [];
       AddCommand().apply(stack, history);
-      UndoCommand()
+      print('stack' + stack.toString());
+      print(history);
+      UndoCommand().apply(stack, history);
+      expect(stack, [1, 2, 3]);
     });
   });
   //Tests for the subtraction command
