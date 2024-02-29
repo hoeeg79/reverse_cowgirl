@@ -61,86 +61,89 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      calculator.execute(addCommand);
-                      lastResult = calculator.stack.last.toString();
-                    });
-                  },
-                  child: const Text('+'),
+            Container(
+              height: 90,
+              width: 280,
+              child: GridView(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 8,
+                  childAspectRatio: 2,
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      calculator.execute(subtractCommand);
-                      lastResult = calculator.stack.last.toString();
-                    });
-                  },
-                  child: const Text('-'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      calculator.execute(multiplicationCommand);
-                      lastResult = calculator.stack.last.toString();
-                    });
-                  },
-                  child: const Text('*'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      calculator.execute(divisionCommand);
-                      lastResult = calculator.stack.last.toString();
-                    });
-                  },
-                  child: const Text('/'),
-                ),
-              ],
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(addCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Text('+'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(subtractCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Text('-'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(multiplicationCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Text('*'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(divisionCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Text('/'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(squareRootCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Text('√'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(squareCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Text('x²'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.stack.clear();
+                        inputNumber = '';
+                        lastResult = '';
+                      });
+                    },
+                    child: const Text('C'),
+                  ),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      calculator.execute(squareRootCommand);
-                      lastResult = calculator.stack.last.toString();
-                    });
-                  },
-                  child: const Text('√'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      calculator.execute(squareCommand);
-                      lastResult = calculator.stack.last.toString();
-                    });
-                  },
-                  child: const Text('x²'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      calculator.stack.clear();
-                      inputNumber = '';
-                      lastResult = '';
-                    });
-                  },
-                  child: const Text('C'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
             Container(
               height: 300,
               width: 300,
               child: GridView(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   crossAxisSpacing: 3,
                   mainAxisSpacing: 4,
