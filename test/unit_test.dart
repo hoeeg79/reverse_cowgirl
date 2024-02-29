@@ -91,9 +91,6 @@ void main (){
       final stack = [2.0, 4.0, 8.0];
       final List<num> history = [];
       DivisionCommand().apply(stack, history);
-      print('THIS IS THE STACK' + stack.toString());
-      print('THIS IS THE HISTORY' + history.toString());
-
       UndoCommand().apply(stack, history);
       expect(stack, [2.0, 4.0, 8.0]);
     });
