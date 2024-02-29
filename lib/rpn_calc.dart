@@ -10,7 +10,7 @@ class AddCommand implements Command {
     num n1 = stack.removeLast();
     num n2 = stack.removeLast();
     var result = n1 + n2;
-    List<num> usedNumbers = [n1, n2];
+    List<num> usedNumbers = [n2, n1];
     stack.add(result);
     history = usedNumbers;
   }
@@ -56,7 +56,7 @@ class SquareCommand implements Command {
   }
 }
 
-class undoCommand implements Command {
+class UndoCommand implements Command {
   @override
   void apply(List<num> stack, List<num> history) {
     stack.removeLast();
