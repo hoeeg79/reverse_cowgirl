@@ -75,7 +75,11 @@ class SquareRootCommand implements Command {
 class SquareCommand implements Command {
   @override
   void apply(List<num> stack, List<num> history) {
-    var result = pow(stack.removeLast(), 2);
+    final num n1 = stack.removeLast();
+
+    history.add(n1);
+
+    var result = pow(n1, 2);
     stack.add(result);
   }
 }
