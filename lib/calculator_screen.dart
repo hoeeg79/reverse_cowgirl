@@ -138,13 +138,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             const SizedBox(height: 16),
             Container(
               height: 300,
-              width: 200,
+              width: 300,
               child: GridView(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
-                  crossAxisSpacing: 2,
-                  mainAxisSpacing: 2,
-                  childAspectRatio: 1, // You can adjust this value if needed
+                  crossAxisSpacing: 3,
+                  mainAxisSpacing: 4,
+                  childAspectRatio: 1.4,
                 ),
                 children: [
                   for (var i = 1; i < 10; i++)
