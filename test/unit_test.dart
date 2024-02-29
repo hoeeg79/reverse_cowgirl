@@ -68,4 +68,12 @@ void main (){
         expect(stack, [2.0]);
     });
   });
+
+  group('SquareCommand', () {
+    test('Checks if the Square of a number works',(){
+      final stack = [23.0];
+      SquareCommand().apply(stack);
+      expect(stack, [529.0]);
+    });
+  });
 }
