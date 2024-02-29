@@ -63,7 +63,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ],
             ),
             Container(
-              height: 90,
+              height: 130,
               width: 280,
               child: GridView(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -101,14 +101,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     child: const Text('*'),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        calculator.execute(undoCommand);
-                        lastResult = calculator.stack.last.toString();
-                      });
-                    },
-                    child: const Icon(Icons.backspace_outlined),
-                  ),
+                      onPressed: () {
+                        setState(() {
+                          if (numberTyped) {
+                            inputNumber = inputNumber.substring(
+                                0, inputNumber.length - 1);
+                          }
+                        });
+                      },
+                      child: const Icon(Icons.backspace_outlined)),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -135,6 +136,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       });
                     },
                     child: const Text('x²'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(undoCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Icon(Icons.undo),
                   ),
                   ElevatedButton(
                     onPressed: () {
