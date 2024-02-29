@@ -23,8 +23,6 @@ void main (){
       final stack = [1, 2, 3];
       final List<num> history = [];
       AddCommand().apply(stack, history);
-      print('stack' + stack.toString());
-      print(history);
       UndoCommand().apply(stack, history);
       expect(stack, [1, 2, 3]);
     });
@@ -48,8 +46,6 @@ void main (){
       final stack = [4, 1, 2];
       final List<num> history = [];
       SubtractCommand().apply(stack, history);
-      print('stack' + stack.toString());
-      print(history);
       UndoCommand().apply(stack, history);
       expect(stack, [4, 1, 2]);
     });
@@ -73,8 +69,6 @@ void main (){
       final stack = [2, 2, 2];
       final List<num> history = [];
       MultiplicationCommand().apply(stack, history);
-      print('stack' + stack.toString());
-      print(history);
       UndoCommand().apply(stack, history);
       expect(stack, [2, 2, 2]);
     });
@@ -97,8 +91,6 @@ void main (){
       final stack = [2.0, 4.0, 8.0];
       final List<num> history = [];
       DivisionCommand().apply(stack, history);
-      print('stack' + stack.toString());
-      print(history);
       UndoCommand().apply(stack, history);
       expect(stack, [2.0, 4.0, 8.0]);
     });
@@ -115,8 +107,6 @@ void main (){
       final stack = [4.0];
       final List<num> history = [];
       SquareRootCommand().apply(stack, history);
-      print('stack' + stack.toString());
-      print(history);
       UndoCommand().apply(stack, history);
       expect(stack, [4.0]);
     });
@@ -133,8 +123,6 @@ void main (){
       final stack = [23.0];
       final List<num> history = [];
       SquareCommand().apply(stack, history);
-      print('stack' + stack.toString());
-      print(history);
       UndoCommand().apply(stack, history);
       expect(stack, [23.0]);
     });
