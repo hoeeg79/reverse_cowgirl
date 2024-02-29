@@ -163,6 +163,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       child: Text(i.toString()),
                     ),
                   ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          if (numberTyped) {
+                            inputNumber += '.';
+                          }
+                        });
+                      },
+                      child: const Text('.')),
+                  ElevatedButton(
                     onPressed: () {
                       setState(() {
                         if (numberTyped) {
