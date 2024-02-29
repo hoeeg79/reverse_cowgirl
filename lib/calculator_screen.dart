@@ -16,6 +16,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Command divisionCommand = DivisionCommand();
   Command squareRootCommand = SquareRootCommand();
   Command squareCommand = SquareCommand();
+  Command undoCommand = UndoCommand();
   bool numberTyped = false;
   String inputNumber = '';
   String lastResult = '';
@@ -98,6 +99,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                       });
                     },
                     child: const Text('*'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(undoCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Icon(Icons.backspace_outlined),
                   ),
                   ElevatedButton(
                     onPressed: () {
