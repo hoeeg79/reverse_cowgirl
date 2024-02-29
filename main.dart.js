@@ -61758,7 +61758,7 @@ s.Q=!1
 s.as=""},
 $S:0}
 A.B7.prototype={
-R(a){return new A.rd(new A.pp(null),"Flutter Demo",A.aaY(null,A.agH(B.P,B.CR),!0),null)}}
+R(a){return new A.rd(new A.pp(null),"Reverse Polish Notation Calculator",A.aaY(null,A.agH(B.P,B.CR),!0),null)}}
 A.Lw.prototype={
 eg(a,b){var s=a.pop(),r=a.pop()
 b.push(s)
