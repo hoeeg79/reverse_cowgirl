@@ -63,14 +63,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ],
             ),
             Container(
-              height: 130,
-              width: 280,
+              height: 80,
+              width: 360,
               child: GridView(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                   crossAxisSpacing: 5,
                   mainAxisSpacing: 8,
-                  childAspectRatio: 2,
+                  childAspectRatio: 2.8,
                 ),
                 children: [
                   ElevatedButton(
@@ -101,15 +101,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     child: const Text('*'),
                   ),
                   ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          if (numberTyped) {
-                            inputNumber = inputNumber.substring(
-                                0, inputNumber.length - 1);
-                          }
-                        });
-                      },
-                      child: const Icon(Icons.backspace_outlined)),
+                    onPressed: () {
+                      setState(() {
+                        calculator.execute(undoCommand);
+                        lastResult = calculator.stack.last.toString();
+                      });
+                    },
+                    child: const Icon(Icons.undo),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
@@ -140,15 +139,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        calculator.execute(undoCommand);
-                        lastResult = calculator.stack.last.toString();
-                      });
-                    },
-                    child: const Icon(Icons.undo),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
                         calculator.stack.clear();
                         inputNumber = '';
                         lastResult = '';
@@ -159,52 +149,75 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 ],
               ),
             ),
-            Container(
-              height: 300,
-              width: 300,
-              child: GridView(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 3,
-                  mainAxisSpacing: 4,
-                  childAspectRatio: 1.4,
-                ),
-                children: [
-                  for (var i = 1; i < 10; i++)
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          if (numberTyped) {
-                            inputNumber += i.toString();
-                          } else {
-                            inputNumber = i.toString();
-                            print(inputNumber);
-                            numberTyped = true;
-                          }
-                        });
-                      },
-                      child: Text(i.toString()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 280,
+                  width: 280,
+                  child: GridView(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 3,
+                      mainAxisSpacing: 4,
+                      childAspectRatio: 1.4,
                     ),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          if (numberTyped) {
-                            inputNumber += '.';
-                          }
-                        });
-                      },
-                      child: const Text('.')),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        if (numberTyped) {
-                          inputNumber += '0';
-                        }
-                      });
-                    },
-                    child: const Text('0'),
+                    children: [
+                      for (var i = 1; i < 10; i++)
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              if (numberTyped) {
+                                inputNumber += i.toString();
+                              } else {
+                                inputNumber = i.toString();
+                                print(inputNumber);
+                                numberTyped = true;
+                              }
+                            });
+                          },
+                          child: Text(i.toString()),
+                        ),
+                      ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              if (numberTyped) {
+                                inputNumber += '.';
+                              }
+                            });
+                          },
+                          child: const Text('.')),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (numberTyped) {
+                              inputNumber += '0';
+                            }
+                          });
+                        },
+                        child: const Text('0'),
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              if (numberTyped) {
+                                inputNumber = inputNumber.substring(
+                                    0, inputNumber.length - 1);
+                              }
+                            });
+                          },
+                          child: const Icon(Icons.backspace_outlined)),
+                    ],
                   ),
-                  ElevatedButton(
+                ),
+                Container(
+                  height: 280,
+                  padding: EdgeInsets.all(5),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25))),
                     onPressed: () {
                       setState(() {
                         calculator.push(num.parse(inputNumber));
@@ -212,10 +225,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         inputNumber = '';
                       });
                     },
-                    child: const Text('Enter'),
+                    child: Text('Enter'),
                   ),
-                ],
-              ),
+                )
+              ],
             ),
           ],
         ));
