@@ -56,7 +56,7 @@ class SquareCommand implements Command {
   }
 }
 
-class undoCommand implements Command {
+class UndoCommand implements Command {
   @override
   void apply(List<num> stack, List<num> history) {
     stack.removeLast();
