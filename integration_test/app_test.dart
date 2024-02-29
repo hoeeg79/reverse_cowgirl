@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 // Replace with your app name
@@ -12,4 +13,11 @@ void main() {
     // TODO write your test code here
 
   });
+}
+
+extension FinderX on CommonFinders {
+  String? displayNumber(){
+    final textWidget = find.byKey(const Key('display')).evaluate().single.widget as Text;
+    return textWidget.data;
+  }
 }
