@@ -63,7 +63,11 @@ class DivisionCommand implements Command {
 class SquareRootCommand implements Command {
   @override
   void apply(List<num> stack, List<num> history) {
-    var result = sqrt(stack.removeLast());
+    final num n1 = stack.removeLast();
+
+    history.add(n1);
+
+    var result = sqrt(n1);
     stack.add(result);
   }
 }
@@ -80,8 +84,9 @@ class UndoCommand implements Command {
   @override
   void apply(List<num> stack, List<num> history) {
     stack.removeLast();
-    stack.add(history.removeLast());
-    stack.add(history.removeLast());
+    for (var number = 0; number < history.length; number++) {
+      stack.add(history.removeLast());
+    }
   }
 }
 
