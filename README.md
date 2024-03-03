@@ -1,16 +1,8 @@
-# reverse_cowgirl
+# Reverse Polish Notation Calculator
 
-A new Flutter project.
+A Flutter project.
 
-## Getting Started
+Made by: Monika Brzezinska, Peder Antonisen, Dan Kjær and Lasse Høeg
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Try it out the web app version here: 
+https://hoeeg79.github.io/reverse_cowgirl/
